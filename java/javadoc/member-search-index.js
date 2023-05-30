@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"cookmaster","c":"Launcher","l":"Launcher()","u":"%3Cinit%3E()"},{"p":"cookmaster","c":"Launcher","l":"main(String[])","u":"main(java.lang.String[])"}];updateSearchResults();
