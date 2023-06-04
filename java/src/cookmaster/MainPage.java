@@ -23,39 +23,39 @@ public class MainPage {
 
         BufferedImage image = ImageIO.read(new File("java/src/cookmaster/assets/logo.png"));
         JLabel pic = new JLabel(new ImageIcon(image));
-        pic.setBounds(470, -50, 250, 250);
+        pic.setBounds(450, -50, 250, 250);
 
         JLabel cookmaster = new JLabel("COOKMASTER");
-        cookmaster.setBounds(450, 30, 300, 300);
+        cookmaster.setBounds(430, 30, 300, 300);
         cookmaster.setPreferredSize(new Dimension(200, 200));
         cookmaster.setFont(new Font("Heebo", Font.PLAIN, 40));
         cookmaster.setForeground(COOKMASTERBLACK_COLOR);
 
         JLabel email = new JLabel("EMAIL");
-        email.setBounds(300, 150, 250, 250);
+        email.setBounds(280, 150, 250, 250);
         email.setPreferredSize(new Dimension(200, 200));
         email.setFont(new Font("Heebo", Font.PLAIN, 20));
         email.setForeground(TITLE_COLOR);
 
         JTextField emailField = new RoundJTextField(20);
-        emailField.setBounds(300, 300, 600, 70);
+        emailField.setBounds(280, 300, 600, 70);
         emailField.setText("");
         PlaceholderTextField.setPlaceholder(emailField, "Enter your email");
 
         JLabel password = new JLabel("PASSWORD");
-        password.setBounds(300, 300, 250, 250);
+        password.setBounds(280, 300, 250, 250);
         password.setPreferredSize(new Dimension(200, 200));
         password.setFont(new Font("Heebo", Font.PLAIN, 20));
         password.setForeground(TITLE_COLOR);
 
         JTextField passwordField = new RoundJTextField(20);
-        passwordField.setBounds(300, 450, 600, 70);
+        passwordField.setBounds(280, 450, 600, 70);
         passwordField.setText("");
         PlaceholderTextField.setPlaceholder(passwordField, "Enter your password");
 
 
         JButton btnConnection = new JButton("LOG IN");
-        btnConnection.setBounds(300, 600, 600, 70);
+        btnConnection.setBounds(280, 600, 600, 70);
         btnConnection.setFont(new Font("Heebo", Font.BOLD, 20));
         btnConnection.setForeground(TITLE_COLOR);
         btnConnection.setBackground(BACKGROUND_COLOR);
@@ -91,7 +91,7 @@ public class MainPage {
         frame.add(passwordField);
         frame.add(btnConnection);
 
-        frame.setSize(1200, 1000);
+        frame.setSize(1200, 900);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);

@@ -29,55 +29,90 @@ public class MenuPage {
         }
 
         JLabel pic = new JLabel(new ImageIcon(image));
-        pic.setBounds(470, -50, 250, 250);
+        pic.setBounds(450, -50, 250, 250);
 
         JLabel cookmaster = new JLabel("COOKMASTER");
-        cookmaster.setBounds(450, 30, 300, 300);
+        cookmaster.setBounds(430, 30, 300, 300);
         cookmaster.setPreferredSize(new Dimension(200, 200));
         cookmaster.setFont(new Font("Heebo", Font.PLAIN, 40));
         cookmaster.setForeground(COOKMASTERBLACK_COLOR);
 
         JButton btnClient = new JButton("GET CLIENTS INFO");
-        btnClient.setBounds(300, 600, 600, 70);
+        btnClient.setBounds(50, 325, 500, 125);
         btnClient.setFont(new Font("Heebo", Font.BOLD, 20));
         btnClient.setForeground(TITLE_COLOR);
         btnClient.setBackground(BACKGROUND_COLOR);
         btnClient.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnClient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                ClientPage clientPage = new ClientPage();
+                clientPage.createClientPage();
             }
         });
 
         JButton btnEvent = new JButton("GET EVENTS INFO");
-        btnEvent.setBounds(300, 600, 600, 70);
+        btnEvent.setBounds(600, 325, 500, 125);
         btnEvent.setFont(new Font("Heebo", Font.BOLD, 20));
         btnEvent.setForeground(TITLE_COLOR);
         btnEvent.setBackground(BACKGROUND_COLOR);
         btnEvent.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnEvent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // frame.dispose();
+                // EventPage eventPage = new EventPage();
+                // eventPage.createEventPage();
             }
         });
 
         JButton btnPrestation = new JButton("GET PRESTATIONS INFO");
-        btnPrestation.setBounds(300, 600, 600, 70);
+        btnPrestation.setBounds(50, 575, 500, 125);
         btnPrestation.setFont(new Font("Heebo", Font.BOLD, 20));
         btnPrestation.setForeground(TITLE_COLOR);
         btnPrestation.setBackground(BACKGROUND_COLOR);
         btnPrestation.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnPrestation.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // frame.dispose();
+                // PrestationPage prestationPage = new PrestationPage();
+                // prestationPage.createPrestationPage();
             }
         });
 
         JButton btnPDF = new JButton("DOWNLOAD PDF");
-        btnPDF.setBounds(300, 600, 600, 70);
+        btnPDF.setBounds(600, 575, 500, 125);
         btnPDF.setFont(new Font("Heebo", Font.BOLD, 20));
         btnPDF.setForeground(TITLE_COLOR);
         btnPDF.setBackground(BACKGROUND_COLOR);
         btnPDF.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnPDF.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // frame.dispose();
+                // PDFPage pdfPage = new PDFPage();
+                // pdfPage.createPDFPage();
+            }
+        });
+
+        try {
+            image = ImageIO.read(new File("java/src/cookmaster/assets/return.png"));
+        }catch(IOException e) {
+            System.out.println("Error: " + e);
+        }
+        BufferedImage buttonIcon = image;
+        JButton button = new JButton(new ImageIcon(buttonIcon));
+        button.setBorderPainted(false);
+        button.setFocusPainted(false);
+        button.setContentAreaFilled(false);
+        button.setBounds(25, 25, 100, 100);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+                MainPage mainPage = new MainPage();
+                try {
+                    mainPage.createMainPage();
+                } catch (IOException ioException) {
+                    ioException.printStackTrace();
+                }
             }
         });
 
@@ -89,8 +124,9 @@ public class MenuPage {
         frame.add(btnEvent);
         frame.add(btnPrestation);
         frame.add(btnPDF);
+        frame.add(button);
 
-        frame.setSize(1200, 1000);
+        frame.setSize(1200, 900);
         frame.setResizable(false);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
