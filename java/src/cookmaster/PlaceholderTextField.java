@@ -4,7 +4,6 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.JTextField;
-import javax.swing.border.Border;
 
 import java.awt.Font;
 import java.awt.event.FocusEvent;

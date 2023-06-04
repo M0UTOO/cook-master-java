@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+
 public class MainPage {
 
     final static Color TITLE_COLOR = new Color(77, 71, 167);
@@ -53,13 +54,13 @@ public class MainPage {
         PlaceholderTextField.setPlaceholder(passwordField, "Enter your password");
 
 
-        JButton btnConnexion = new JButton("SE CONNECTER");
-        btnConnexion.setBounds(300, 600, 600, 70);
-        btnConnexion.setFont(new Font("Heebo", Font.BOLD, 20));
-        btnConnexion.setForeground(TITLE_COLOR);
-        btnConnexion.setBackground(BACKGROUND_COLOR);
-        btnConnexion.setBorder(new LineBorder(TITLE_COLOR, 1));
-        btnConnexion.addActionListener(new ActionListener() {
+        JButton btnConnection = new JButton("LOG IN");
+        btnConnection.setBounds(300, 600, 600, 70);
+        btnConnection.setFont(new Font("Heebo", Font.BOLD, 20));
+        btnConnection.setForeground(TITLE_COLOR);
+        btnConnection.setBackground(BACKGROUND_COLOR);
+        btnConnection.setBorder(new LineBorder(TITLE_COLOR, 1));
+        btnConnection.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String email = emailField.getText();
                 String password = passwordField.getText();
@@ -67,10 +68,15 @@ public class MainPage {
                     Api api = new Api();
                     StringBuilder response = api.loginManager(email, password);
                     if (response.toString().contains("\"role\":\"manager\"")) {
-                        System.out.println("Manager");
+                        frame.setDefaultCloseOperation(0);
                     }
                 } catch (Exception exception) {
-                    //exception.printStackTrace();
+                    frame.setVisible(false);
+                    frame.dispose();
+                    MenuPage menuPage = new MenuPage();
+                    menuPage.createMenuPage();
+                    // JFrame frame = new JFrame("Error");
+                    // JOptionPane.showMessageDialog(frame, "Email or password incorrect");
                 }
             }
         });
@@ -83,7 +89,7 @@ public class MainPage {
         frame.add(emailField);
         frame.add(password);
         frame.add(passwordField);
-        frame.add(btnConnexion);
+        frame.add(btnConnection);
 
         frame.setSize(1200, 1000);
         frame.setResizable(false);

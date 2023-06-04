@@ -8,12 +8,12 @@ package cookmaster;
  */
     public class Launcher {
 
-
-
         public static void main(String[] args) throws Exception
         {
             MainPage mainPage = new MainPage();
             mainPage.createMainPage();
+            // MenuPage menuPage = new MenuPage();
+            // menuPage.createMenuPage();
 
             // Api api = new Api();
 
