@@ -6,7 +6,7 @@ import java.net.*;
 public class Api {
     
 
-    public StringBuilder getApiInfo(String endpoint, String method) {
+    public String getApiInfo(String endpoint, String method) {
         try {
             // Create URL object with the API endpoint
             URL url = new URL("http://localhost:9000/" + endpoint);
@@ -21,8 +21,14 @@ public class Api {
             String token = file.readFromInputStream(new FileInputStream("java/src/cookmaster/token.yml"));
             connection.setRequestProperty("Token", token.substring(0, token.length() - 1));
 
+            BufferedReader reader = null;
+
             // Read the response from the API
-            BufferedReader reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            try{
+                reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+            } catch (Exception e) {
+                //e.printStackTrace();
+            }
             String line;
             StringBuilder response = new StringBuilder();
             while ((line = reader.readLine()) != null) {
@@ -32,7 +38,7 @@ public class Api {
 
             // Close the connection
             connection.disconnect();
-            return response;
+            return response.toString();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,7 +46,7 @@ public class Api {
         return null;
     }
 
-    public StringBuilder loginManager(String email, String password) {
+    public String loginManager(String email, String password) {
         try {
             // Create URL object with the API endpoint
             URL url = new URL("http://localhost:9000/user/login");
@@ -72,7 +78,7 @@ public class Api {
                     response.append(responseLine.trim());
                 }
                 connection.disconnect();
-                return response;
+                return response.toString();
             }
         } catch (IOException e) {
             // e.printStackTrace();

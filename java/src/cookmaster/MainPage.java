@@ -66,8 +66,8 @@ public class MainPage {
                 String password = passwordField.getText();
                 try {
                     Api api = new Api();
-                    StringBuilder response = api.loginManager(email, password);
-                    if (response.toString().contains("\"role\":\"manager\"")) {
+                    String response = api.loginManager(email, password);
+                    if (response.contains("\"role\":\"manager\"")) {
                         frame.setDefaultCloseOperation(0);
                     }
                 } catch (Exception exception) {

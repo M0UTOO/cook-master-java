@@ -59,13 +59,13 @@ public class MenuPage {
         btnEvent.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnEvent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // frame.dispose();
-                // EventPage eventPage = new EventPage();
-                // eventPage.createEventPage();
+                frame.dispose();
+                EventPage eventPage = new EventPage();
+                eventPage.createEventPage();
             }
         });
 
-        JButton btnPrestation = new JButton("GET PRESTATIONS INFO");
+        JButton btnPrestation = new JButton("GET ORDERS INFO");
         btnPrestation.setBounds(50, 575, 500, 125);
         btnPrestation.setFont(new Font("Heebo", Font.BOLD, 20));
         btnPrestation.setForeground(TITLE_COLOR);
@@ -73,9 +73,9 @@ public class MenuPage {
         btnPrestation.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnPrestation.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // frame.dispose();
-                // PrestationPage prestationPage = new PrestationPage();
-                // prestationPage.createPrestationPage();
+                frame.dispose();
+                PrestationPage prestationPage = new PrestationPage();
+                prestationPage.createPrestationPage();
             }
         });
 
@@ -99,12 +99,12 @@ public class MenuPage {
             System.out.println("Error: " + e);
         }
         BufferedImage buttonIcon = image;
-        JButton button = new JButton(new ImageIcon(buttonIcon));
-        button.setBorderPainted(false);
-        button.setFocusPainted(false);
-        button.setContentAreaFilled(false);
-        button.setBounds(25, 25, 100, 100);
-        button.addActionListener(new ActionListener() {
+        JButton btnReturn = new JButton(new ImageIcon(buttonIcon));
+        btnReturn.setBorderPainted(false);
+        btnReturn.setFocusPainted(false);
+        btnReturn.setContentAreaFilled(false);
+        btnReturn.setBounds(25, 25, 100, 100);
+        btnReturn.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
                 MainPage mainPage = new MainPage();
@@ -124,7 +124,7 @@ public class MenuPage {
         frame.add(btnEvent);
         frame.add(btnPrestation);
         frame.add(btnPDF);
-        frame.add(button);
+        frame.add(btnReturn);
 
         frame.setSize(1200, 900);
         frame.setResizable(false);
