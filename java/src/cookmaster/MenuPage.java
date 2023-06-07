@@ -45,6 +45,14 @@ public class MenuPage {
         btnClient.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnClient.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Api api = new Api();
+                    api.getApiInfo("", "GET");
+                } catch (Exception exception) {
+                    JFrame frame = new JFrame("Error");
+                    JOptionPane.showMessageDialog(frame, "Can't get database info");
+                    return;
+                }
                 frame.dispose();
                 ClientPage clientPage = new ClientPage();
                 clientPage.createClientPage();
@@ -59,6 +67,14 @@ public class MenuPage {
         btnEvent.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnEvent.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Api api = new Api();
+                    api.getApiInfo("", "GET");
+                } catch (Exception exception) {
+                    JFrame frame = new JFrame("Error");
+                    JOptionPane.showMessageDialog(frame, "Can't get database info");
+                    return;
+                }
                 frame.dispose();
                 EventPage eventPage = new EventPage();
                 eventPage.createEventPage();
@@ -73,6 +89,14 @@ public class MenuPage {
         btnPrestation.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnPrestation.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                try {
+                    Api api = new Api();
+                    api.getApiInfo("", "GET");
+                } catch (Exception exception) {
+                    JFrame frame = new JFrame("Error");
+                    JOptionPane.showMessageDialog(frame, "Can't get database info");
+                    return;
+                }
                 frame.dispose();
                 PrestationPage prestationPage = new PrestationPage();
                 prestationPage.createPrestationPage();
@@ -87,9 +111,13 @@ public class MenuPage {
         btnPDF.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnPDF.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // frame.dispose();
-                // PDFPage pdfPage = new PDFPage();
-                // pdfPage.createPDFPage();
+                frame.dispose();
+                CreatePDF createPDF = new CreatePDF();
+                try {
+                    createPDF.createPDF();
+                } catch (Exception exception) {
+                    exception.printStackTrace();
+                }
             }
         });
 

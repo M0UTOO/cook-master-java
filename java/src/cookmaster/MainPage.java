@@ -48,11 +48,9 @@ public class MainPage {
         password.setFont(new Font("Heebo", Font.PLAIN, 20));
         password.setForeground(TITLE_COLOR);
 
-        JTextField passwordField = new RoundJTextField(20);
+        JPasswordField passwordField = new RoundJPasswordField(20);
         passwordField.setBounds(280, 450, 600, 70);
         passwordField.setText("");
-        PlaceholderTextField.setPlaceholder(passwordField, "Enter your password");
-
 
         JButton btnConnection = new JButton("LOG IN");
         btnConnection.setBounds(280, 600, 600, 70);
@@ -63,20 +61,27 @@ public class MainPage {
         btnConnection.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String email = emailField.getText();
-                String password = passwordField.getText();
+                String password = String.valueOf(passwordField.getPassword());
+                try {
+                    Api api = new Api();
+                    api.getApiInfo("", "GET");
+                } catch (Exception exception) {
+                    JFrame frame = new JFrame("Error");
+                    JOptionPane.showMessageDialog(frame, "Can't get database info");
+                    return;
+                }
                 try {
                     Api api = new Api();
                     String response = api.loginManager(email, password);
                     if (response.contains("\"role\":\"manager\"")) {
-                        frame.setDefaultCloseOperation(0);
+                        frame.setVisible(false);
+                        frame.dispose();
+                        MenuPage menuPage = new MenuPage();
+                        menuPage.createMenuPage();
                     }
                 } catch (Exception exception) {
-                    frame.setVisible(false);
-                    frame.dispose();
-                    MenuPage menuPage = new MenuPage();
-                    menuPage.createMenuPage();
-                    // JFrame frame = new JFrame("Error");
-                    // JOptionPane.showMessageDialog(frame, "Email or password incorrect");
+                    JFrame frame = new JFrame("Error");
+                    JOptionPane.showMessageDialog(frame, "Email or password incorrect");
                 }
             }
         });
