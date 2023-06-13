@@ -112,9 +112,15 @@ public class MenuPage {
         btnPDF.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
-                CreatePDF createPDF = new CreatePDF();
+                // CreatePDF createPDF = new CreatePDF();
+                // try {
+                //     createPDF.createPDF();
+                // } catch (Exception exception) {
+                //     exception.printStackTrace();
+                // }
+                PdfTest pdfTest = new PdfTest();
                 try {
-                    createPDF.createPDF();
+                    pdfTest.createPDF();
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }

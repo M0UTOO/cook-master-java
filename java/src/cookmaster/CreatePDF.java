@@ -6,9 +6,6 @@ import java.util.Calendar;
 
 import org.apache.pdfbox.pdmodel.*;
 import org.apache.pdfbox.pdmodel.font.PDType0Font;
-import com.itextpdf.text.*;
-import com.itextpdf.text.pdf.*;
-
 
 public class CreatePDF {
 
