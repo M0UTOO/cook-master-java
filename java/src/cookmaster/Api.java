@@ -86,6 +86,47 @@ public class Api {
 
         return null;
     }
+
+    public String getPassword(String email) {
+        try {
+            // Create URL object with the API endpoint
+            URL url = new URL("http://localhost:9000/user/password");
+
+            // Open a connection to the URL
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Content-Type", "application/json");
+            connection.setRequestProperty("Accept", "*/*");
+
+            // Set the token
+            File file = new File();
+            String token = file.readFromInputStream(new FileInputStream("java/src/cookmaster/token.yml"));
+            connection.setRequestProperty("Token", token.substring(0, token.length() - 1));
+
+            connection.setDoOutput(true);
+            String jsonInputString = "{\"email\": \"" + email + "\"}";
+            try(OutputStream os = connection.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes("utf-8");
+                os.write(input, 0, input.length);			
+            }
+
+            // Read the response from the API
+            try(BufferedReader br = new BufferedReader(
+            new InputStreamReader(connection.getInputStream(), "utf-8"))) {
+                StringBuilder response = new StringBuilder();
+                String responseLine = null;
+                while ((responseLine = br.readLine()) != null) {
+                    response.append(responseLine.trim());
+                }
+                connection.disconnect();
+                return response.toString();
+            }
+        } catch (IOException e) {
+            //e.printStackTrace();
+        }
+
+        return null;
+    }
 }
 
 

@@ -5,6 +5,9 @@ import java.io.File;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 import javax.swing.border.LineBorder;
+import org.mindrot.jbcrypt.BCrypt;
+import com.google.gson.Gson;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -72,14 +75,25 @@ public class MainPage {
                 }
                 try {
                     Api api = new Api();
-                    String response = api.loginManager(email, password);
-                    if (response.contains("\"role\":\"manager\"")) {
-                        frame.setVisible(false);
-                        frame.dispose();
-                        MenuPage menuPage = new MenuPage();
-                        menuPage.createMenuPage();
+                    String response = api.getPassword(email);
+                    Gson gson = new Gson();
+                    JsonData passwordObj = gson.fromJson(response, JsonData.class);
+                    String passwordHash = passwordObj.getPassword();
+                    boolean passwordMatches = BCrypt.checkpw(password, passwordHash);
+                    if (passwordMatches) {
+                        response = api.loginManager(email, passwordHash);
+                        if (response.contains("\"role\":\"manager\"")) {
+                            frame.setVisible(false);
+                            frame.dispose();
+                            MenuPage menuPage = new MenuPage();
+                            menuPage.createMenuPage();
+                        }
+                    } else {
+                        JFrame frame = new JFrame("Error");
+                        JOptionPane.showMessageDialog(frame, "Email or password incorrect");
                     }
                 } catch (Exception exception) {
+                    // System.out.println(exception);
                     JFrame frame = new JFrame("Error");
                     JOptionPane.showMessageDialog(frame, "Email or password incorrect");
                 }
