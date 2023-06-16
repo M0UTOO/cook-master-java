@@ -114,7 +114,7 @@ public class ClientPage {
       
         JsonToArray jsonToArray = new JsonToArray();
         String[][] clientList = jsonToArray.jsonToArray(response);  
-        String column[]={"ID","Email","MDP","Nom","Prenom","Photo","DateDeCreation","DateDeDeniereConnexion","IsBlocked","IdClient","Fidelity","StreetName","Country", "City", "StreetNumber", "PhoneNumber", "Subsription", "KeepSubsription", "IdUser"};
+        String column[]={"Email","Nom","Prenom","Photo","DateDeCreation","DateDeDeniereConnexion","IsBlocked","IdClient","Fidelity","StreetName","Country", "City", "StreetNumber", "PhoneNumber", "Subsription", "KeepSubsription", "IdUser"};
         JTable jt=new JTable(clientList,column);
         JScrollPane sp=new JScrollPane(jt);
         sp.setBounds(50,350,1100,500);

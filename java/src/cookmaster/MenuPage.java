@@ -111,16 +111,16 @@ public class MenuPage {
         btnPDF.setBorder(new LineBorder(TITLE_COLOR, 1));
         btnPDF.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                // CreatePDF createPDF = new CreatePDF();
-                // try {
-                //     createPDF.createPDF();
-                // } catch (Exception exception) {
-                //     exception.printStackTrace();
-                // }
-                PdfTest pdfTest = new PdfTest();
                 try {
-                    pdfTest.createPDF();
+                    Pdf pdf = new Pdf();
+                    boolean iscreated = pdf.createPDF();
+                    if (iscreated) {
+                        JFrame frame = new JFrame("Success");
+                        JOptionPane.showMessageDialog(frame, "PDF created");
+                    } else {
+                        JFrame frame = new JFrame("Error");
+                        JOptionPane.showMessageDialog(frame, "Can't create PDF");
+                    }
                 } catch (Exception exception) {
                     exception.printStackTrace();
                 }
