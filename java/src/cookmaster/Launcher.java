@@ -10,14 +10,7 @@ package cookmaster;
 
         public static void main(String[] args) throws Exception
         {
-            // MainPage mainPage = new MainPage();
-            // mainPage.createMainPage();
-            MenuPage menuPage = new MenuPage();
-            menuPage.createMenuPage();
-
-            // Api api = new Api();
-
-            // StringBuilder response = api.getApiInfo("user/all", "GET");
-            // System.out.println(response.toString());
+            MainPage mainPage = new MainPage();
+            mainPage.createMainPage();
         }
 }
