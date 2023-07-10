@@ -7,6 +7,8 @@
 ## HOW TO USE IT ?
     
     You can use it by cloning the repository 
+
+    * import the token.yml in the folder java/src/live/becomeacookmaster/cookmaster/assets
     
     * run `mvn clean install`
 
