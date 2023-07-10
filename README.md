@@ -8,9 +8,9 @@
     
     You can use it by cloning the repository 
     
-    * Installing the libraries
+    * run `mvn clean install`
 
-    * Running the main method of the Launcher class
+    * run `java -jar target/cookmaster-java-1.0.0.jar`
 
 ## WHO DID IT ? 
     
